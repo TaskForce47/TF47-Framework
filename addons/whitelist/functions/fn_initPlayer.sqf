@@ -20,7 +20,7 @@ player addEventHandler ["GetInMan", {
     { !isNull player },
     {
         [
-            { (!isNil QGVAR(initialized) },
+            { !isNil QGVAR(initialized) },
             {
                 [player] remoteExecCall [QFUNC(handleSlotCheck), 2];
             },
@@ -44,6 +44,11 @@ player addEventHandler ["GetInMan", {
                         
                         player disableUAVConnectability [_vehicle, true];
                         GVAR(uav) pushBackUnique _vehicle;
+                        //cleanup uav list
+                        _vehicle addEventHandler ["Killed", {
+                            params ["_drone"];
+                            GVAR(index) deleteAt (GVAR(uav) findIf { _x isEqualTo _drone });
+                        }];
                     },
                     true,
                     [],
