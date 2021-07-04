@@ -5,7 +5,7 @@ class CfgFunctions
         class whitelist
         {
             file = "\tf47\tf47_framework\addons\whitelist\functions";
-            class checkRoles {};
+            class checkRole {};
             class checkWhitelistSlot {};
             class handleRoleCheck {};
             class handleSlotCheck {};

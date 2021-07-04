@@ -8,7 +8,7 @@ params [
 if (isNull _unit) exitWith {};
 if (!local _unit) exitWith {
     _this remoteExecCall [QFUNC(kickToLobby), _unit];
-}
+};
 
 [
     "TF47_core_notification_notWhitelisted",

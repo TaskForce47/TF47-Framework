@@ -7,7 +7,7 @@ params [
 
 if (!isServer) exitWith {
     _this remoteExecCall [QFUNC(registerVehicle), 2];
-}
+};
 
 if (isNull _vehicle) exitWith {};
 if (_cost < 0) then { _cost = _cost * -1 };
