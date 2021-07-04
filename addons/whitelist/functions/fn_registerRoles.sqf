@@ -15,7 +15,7 @@ if (_slot isEqualType objNull) then {
     if (! (_x in _validRoles)) exitWith {
         LOG_2("WARNING! COULD NOT REGISTER SLOT ROLES! PASSED INVALID ROLE!", _x);
         false
-    };	
+    };
 } forEach _roles;
 
 GVAR(slotRoles) set [_slot, _roles];
