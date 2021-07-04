@@ -12,3 +12,5 @@ if (slot isEqualType objNull) then {
 if (_slot isEqualTo "") exitWith {};
 
 GVAR(slotRequiredPermissions) set ["_slot", [_requiredPermissions, _minimalPermission]];
+
+true
