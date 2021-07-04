@@ -13,11 +13,3 @@ class CfgPatches {
 };
 
 #include "CfgFunctions.hpp"
-
-class Extended_PreInit_EventHandlers 
-{
-    class ADDON 
-    {
-        init = QUOTE(call preprocessFileLineNumbers ""\tf47\tf47_framework\addons\whitelist\XEH_preInit"");
-    };
-};

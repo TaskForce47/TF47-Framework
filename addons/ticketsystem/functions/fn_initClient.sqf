@@ -53,8 +53,6 @@ player addEventHandler ["Killed", {
                 [_message]
             ] call BIS_fnc_showNotification;
         };
-
-        
     }
 ] call CBA_fnc_addEventhandler;
 

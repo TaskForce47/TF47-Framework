@@ -38,7 +38,7 @@ if (GVAR(endSession)) then {
                         ] remoteExec ["BIS_fnc_EXP_camp_SITREP", 0];
                         missionNamespace setVariable [QGVAR(suddenDeath), false];
                     } else {
-                        ["TF47_core_notification_outOfTickets", ["We have run out of tickets, mission failed!"]] remoteExec ["BIS_fnc_showNotification", -2];
+                        ["TF47NotificationOutOfTickets", ["We have run out of tickets, mission failed!"]] remoteExec ["BIS_fnc_showNotification", -2];
                         [
                             { "EveryoneLost" call BIS_fnc_endMissionServer; },
                             5

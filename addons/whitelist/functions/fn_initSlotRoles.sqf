@@ -4,7 +4,7 @@ params [
     ["_unit", objNull, [objNull]]
 ];
 
-if (isNull _slot) exitWith {false};
+if (isNull _unit) exitWith {false};
 
 private _slot = str _unit;
 

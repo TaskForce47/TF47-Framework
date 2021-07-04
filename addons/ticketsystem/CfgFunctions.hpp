@@ -15,6 +15,7 @@ class CfgFunctions
             class registerUnit {};
             class registerVehicle {};
             class saveTicketsToProfile {};
+            class settings { preInit = 1; };
         };
     };
 };
