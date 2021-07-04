@@ -1,0 +1,70 @@
+name: Arma
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout the source code
+      uses: actions/checkout@master
+    - name: Validate SQF
+      run: python3 tools/sqf_validator.py
+    - name: Validate Config
+      run: python3 tools/config_style_checker.py
+    - name: Check Strings
+      run: python3 tools/check_strings.py
+    - name: Check for BOM
+      uses: arma-actions/bom-check@master
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout the source code
+      uses: actions/checkout@master
+    - name: Lint (sqflint)
+      uses: arma-actions/sqflint@master
+      continue-on-error: true # No failure due to many false-positives
+
+  build:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout the source code
+      uses: actions/checkout@master
+    - name: Checkout submodules
+      run: git submodule update --init --recursive
+    - uses: gruppe-adler/action-release-with-hemtt@60f7195e5240289fecd07c29cc5ec8fd92ad2159
+      name: 'Build Mod with HEMTT'
+      id: build
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2-preview
+      with:
+        name: taskforce47_client_mod
+        path: ${{ steps.build.outputs.release_path }}
+
+  job_release:
+    runs-on: windows-latest
+    if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
+    needs: [build]
+    steps:
+      # Download the build mod
+      - name: Download latest build
+        uses: actions/download-artifact@v2
+        with:
+          name: taskforce47_client_mod
+
+      # zip it
+      - uses: papeloto/action-zip@v1
+        with:
+          files: \@taskforce47_client_mod/
+          dest: \@taskforce47_client_mod.zip
+
+      # release it
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: true
+          files: |
+            \@taskforce47_client_mod.zip

@@ -1,0 +1,25 @@
+name = "taskforce47_framework"
+modname = "taskforce47_framework"
+prefix = "TF47"
+author = "TF47 Development Team"
+mainprefix = "tf47"
+sig_version = 3
+
+files = [
+	"mod.cpp",
+	"meta.cpp",
+	"*.paa"
+]
+include = [
+    "./include"
+]
+
+key_name = "{{prefix}}-{{version}}"
+authority = "{{prefix}}-{{version}}-{{git \"id 8\"}}"
+
+releasebuild = []
+
+show_output = true
+
+[header_exts]
+version= "{{git \"id 8\"}}"
