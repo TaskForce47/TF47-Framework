@@ -1,13 +1,13 @@
 #include "macros.hpp"
 
 params [
-	["_slot", "", ["", objNull]],
-	["_requiredPermission", [], [[]]],
-	["_minimalPermission", [], [[]]]
+    ["_slot", "", ["", objNull]],
+    ["_requiredPermission", [], [[]]],
+    ["_minimalPermission", [], [[]]]
 ];
 
 if (slot isEqualType objNull) then {
-	_slot = str _slot;
+    _slot = str _slot;
 };
 if (_slot isEqualTo "") exitWith {};
 

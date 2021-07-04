@@ -5,17 +5,17 @@ GVAR(slotRoles) = createHashMap;
 GVAR(permissionCache) = createHashMap;
 GVAR(attackAircraft) = [];
 GVAR(validRoles) = [
-	"TF47_role_tank_crew",
-	"TF47_role_plane_transport_crew",
-	"TF47_role_plane_transport_pilot",
-	"TF47_role_plane_attack_pilot",
-	"TF47_role_plane_attack_crew",
-	"TF47_role_rotary_transport_crew",
-	"TF47_role_rotary_transport_pilot",
-	"TF47_role_rotary_attack_pilot",
-	"TF47_role_rotary_attack_crew",
-	"TF47_role_uav_small",
-	"TF47_role_uav_large"
+    "TF47_role_tank_crew",
+    "TF47_role_plane_transport_crew",
+    "TF47_role_plane_transport_pilot",
+    "TF47_role_plane_attack_pilot",
+    "TF47_role_plane_attack_crew",
+    "TF47_role_rotary_transport_crew",
+    "TF47_role_rotary_transport_pilot",
+    "TF47_role_rotary_attack_pilot",
+    "TF47_role_rotary_attack_crew",
+    "TF47_role_uav_small",
+    "TF47_role_uav_large"
 ];
 
 addMissionEventHandler ["PlayerConnected", {

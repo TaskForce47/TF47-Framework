@@ -1,7 +1,7 @@
 #include "macros.hpp"
 
 params [
-	["_unit", objNull, [objNull]]
+    ["_unit", objNull, [objNull]]
 ];
 
 if (isNull _unit) exitWith {false};
