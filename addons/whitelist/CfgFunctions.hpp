@@ -15,6 +15,7 @@ class CfgFunctions
             class isValidVehicle {};
             class kickFromVehicle {};
             class kickToLobby {};
+            class registerAttackAircraft {};
             class registerRoles {};
             class registerSlotWhitelist {};
         };
