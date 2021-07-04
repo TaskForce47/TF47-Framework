@@ -1,5 +1,6 @@
 #include "macros.hpp"
 if (!hasInterface && !isDedicated) exitWith {};
+if (!GVAR(enableTicketsystem)) exitWith {};
 
 //handles the animation for displaying the cost of a vehicle on entering
 player addEventHandler ["GetInMan", {

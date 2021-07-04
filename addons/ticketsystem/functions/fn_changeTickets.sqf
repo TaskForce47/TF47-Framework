@@ -23,6 +23,10 @@ if (_isPositive) then {
     _ticketChange = _ticketChange * -1;
 };
 
+if (GVAR(tickets) > GVAR(maxTickets)) then {
+    GVAR(tickets) = GVAR(maxTickets);
+};
+
 publicVariable QGVAR(tickets);
 
 [EVENT(ticketsChanged), [_ticketChange, GVAR(tickets), _message]] call CBA_fnc_globalEvent;

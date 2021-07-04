@@ -1,6 +1,7 @@
 #include "macros.hpp"
 
 if (!isServer) exitWith {};
+if (!GVAR(enableTicketsystem)) exitWith {};
 
 GVAR(tickets) = call FUNC(loadTicketsFromProfile);
 publicVariable QGVAR(tickets);
@@ -22,3 +23,31 @@ addMissionEventHandler ["HandleDisconnect", {
 
     false //this must return false otherwise unit becomes ai
 }];
+
+if (GVAR(endSession)) then {
+    [
+        EVENT(outOfTickets),
+        {
+            if (missionNamespace getVariable [QGVAR(suddenDeath), false]) exitWith {};
+            missionNamespace setVariable [QGVAR(suddenDeath), true];
+            [
+                {
+                    if (GVAR(tickets) > 0) then {
+                        [
+                            ["Success! We got a few tickets back and are back in business!", 2, 0, 6]
+                        ] remoteExec ["BIS_fnc_EXP_camp_SITREP", 0];
+                        missionNamespace setVariable [QGVAR(suddenDeath), false];
+                    } else {
+                        ["TF47_core_notification_outOfTickets", ["We have run out of tickets, mission failed!"]] remoteExec ["BIS_fnc_showNotification", -2];
+                        [
+                            { "EveryoneLost" call BIS_fnc_endMissionServer; },
+                            5
+                        ] call CBA_fnc_waitAndExecute;
+                    };
+                },
+                nil,
+                GVAR(endSessionTimeout)
+            ] call CBA_fnc_waitAndExecute;
+        }
+    ] call CBA_fnc_addEventhandler;
+};
