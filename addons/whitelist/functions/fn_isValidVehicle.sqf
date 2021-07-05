@@ -4,7 +4,8 @@ params [
     ["_vehicle", objNull, [objNull]]
 ];
 
-if (isNull _vehicle) exitWith {false};
+if (isNull _vehicle) exitWith { false };
+if (! (_vehicle getVariable [QGVAR(whitelistDisabled), false])) exitWith { false };
 
 ! (
     _vehicle isKindOf "ParachuteBase" ||
