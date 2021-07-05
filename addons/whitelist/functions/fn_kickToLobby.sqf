@@ -11,7 +11,7 @@ if (!local _unit) exitWith {
 };
 
 [
-    "TF47NotificationNotWhitelisted ",
+    "TF47NotificationNotWhitelisted",
     [_message]
 ] call BIS_fnc_showNotification;
 
