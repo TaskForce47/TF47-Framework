@@ -19,13 +19,13 @@ switch (_vehicleType) do {
     };
     case "Plane": {
         if ((typeOf _vehicle) in GVAR(attackAircraft)) then {
-            if (driver _unit) then {
+            if (driver _vehicle isEqualTo _unit) then {
                 if (_unit getUnitTrait ROLE_PLANE_ATTACK_PILOT) exitWith { true };
             } else {
                 if (_unit getUnitTrait ROLE_PLANE_ATTACK_CREW) exitWith { true };
             };
         } else {
-            if (driver _unit) then {
+            if (driver _vehicle isEqualTo _unit) then {
                 if (_unit getUnitTrait ROLE_PLANE_TRANSPORT_PILOT) exitWith { true };
             } else {
                 if (_unit getUnitTrait ROLE_PLANE_TRANSPORT_CREW) exitWith { true };
@@ -34,13 +34,13 @@ switch (_vehicleType) do {
     };
     case "Helicopter": {
         if ((typeOf _vehicle) in GVAR(attackAircraft)) then {
-            if (driver _unit) then {
+            if (driver _vehicle isEqualTo _unit) then {
                 if (_unit getUnitTrait ROLE_ROTARY_ATTACK_PILOT) exitWith { true };
             } else {
                 if (_unit getUnitTrait ROLE_ROTARY_ATTACK_CREW) exitWith { true };
             };
         } else {
-            if (driver _unit) then {
+            if (driver _vehicle isEqualTo _unit) then {
                 if (_unit getUnitTrait ROLE_ROTARY_TRANSPORT_PILOT) exitWith { true };
             } else {
                 if (_unit getUnitTrait ROLE_ROTARY_TRANSPORT_CREW) exitWith { true };
