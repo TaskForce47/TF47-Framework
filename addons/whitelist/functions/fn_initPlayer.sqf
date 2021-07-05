@@ -27,6 +27,7 @@ player addEventHandler ["GetInMan", {
             nil,
             10,
             {
+                if (isServer) exitWith {}; //player mission editor
                 [player, "Could not get whitelist! Please report to an admin."] call FUNC(kickToLobby);
             }
         ] call CBA_fnc_waitUntilAndExecute;
