@@ -2,10 +2,12 @@
 
 if(!isServer) exitWith {};
 
-
-EFUNC(prism,createPlayer) = compileFinal "params [""_playerUid"", ""_playerName""]; TF47PrismCreatePlayer [_playerUid, _playerName];";
-EFUNC(prism,updateTicketCount) = compileFinal "params [""_ticketChange"", ""_ticketCount"", ""_message"", ""_playerUid""]; TF47PrismUpdateTicketCount [_ticketChange, _ticketCount, _message, _playerUid];";
-EFUNC(prism,getWhitelist) = compileFinal "params [""_playerUid"", ""_callbackCode""]; TF47PrismGetWhitelist [_playerUid, _callbackCode];";
+//prevent execution on local sp
+if (isServer && !hasInterface) then {
+    EFUNC(prism,createPlayer) = compileFinal "params [""_playerUid"", ""_playerName""]; TF47PrismCreatePlayer [_playerUid, _playerName];";
+    EFUNC(prism,updateTicketCount) = compileFinal "params [""_ticketChange"", ""_ticketCount"", ""_message"", ""_playerUid""]; TF47PrismUpdateTicketCount [_ticketChange, _ticketCount, _message, _playerUid];";
+    EFUNC(prism,getWhitelist) = compileFinal "params [""_playerUid"", ""_callbackCode""]; TF47PrismGetWhitelist [_playerUid, _callbackCode];";
+};
 
 addMissionEventHandler ["PlayerConnected", {
     params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
