@@ -56,3 +56,14 @@ player addEventHandler ["Killed", {
     }
 ] call CBA_fnc_addEventhandler;
 
+[
+    { !isNull player },
+    {
+        [
+            {
+                hint format ["Current tickets: %1", GVAR(tickets)];
+            },
+            120
+        ] call CBA_fnc_addPerFrameHandler;
+    }
+] call CBA_fnc_waitUntilAndExecute;
