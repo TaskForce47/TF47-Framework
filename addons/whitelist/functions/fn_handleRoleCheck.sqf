@@ -12,6 +12,6 @@ if (! ([_vehicle] call FUNC(isValidVehicle))) exitWith {};
 
 if ([_unit, _vehicle] call FUNC(checkRole)) exitWith {};
 
-[_unit, _vehicle] call FUNC(kickFromVehicle);
+[_unit] call FUNC(kickFromVehicle);
 
 true
