@@ -1,58 +1,59 @@
-#include "macros.hpp"
+#include "script_component.hpp"
+
+LOG("TF47 Ticketsystem running preInit!");
+
 [
     QGVAR(enableTicketsystem),
     "CHECKBOX",
     ["Enable Ticketsystem", "Enables or disables the ticketsystem"],
-    ["TF47", "Ticketsystem"],
+    ["TF47 Framework", "Ticketsystem"],
     true,
-    1,
-    nil,
-    true
-] call CBA_fnc_addSettings;
+    1
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(defaultTickets),
     "LIST",
     ["Default tickets", "Ticket count the mission starts with"],
-    ["TF47", "Ticketsystem"],
-    [[100, 150, 200], [], 0],
+    ["TF47 Framework", "Ticketsystem"],
+    [[100, 150, 200, 250, 300, 350, 400], [], 0],
     1
-] call CBA_fnc_addSettings;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(maxTickets),
     "LIST",
     ["Max tickets", "Maximal amount of tickets allowed at every given time"],
-    ["TF47", "Ticketsystem"],
+    ["TF47 Framework", "Ticketsystem"],
     [[100, 150, 200], [], 0],
     1
-] call CBA_fnc_addSettings;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(endSession),
     "CHECKBOX",
     ["End session", "Ends a session if no more tickets are available"],
-    ["TF47", "Ticketsystem"],
+    ["TF47 Framework", "Ticketsystem"],
     true,
     1
-] call CBA_fnc_addSettings;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(endSessionTimeout),
-    "SLIDER",
+    "LIST",
     ["Timeout befor session end", "Timeout before the session ends"],
-    ["TF47", "Ticketsystem"],
-    [0, 600, 60, 0, true],
+    ["TF47 Framework", "Ticketsystem"],
+    [[30, 60, 90, 120, 150, 180, 210], [], 0],
     1
-] call CBA_fnc_addSettings;
+] call CBA_fnc_addSetting;
 
 [
-    QGVAR(logToDatabasea),
+    QGVAR(logToDatabase),
     "CHECKBOX",
     ["Log to database", "logs the ticketchange to the database"],
-    ["TF47", "Ticketsystem"],
+    ["TF47 Framework", "Ticketsystem"],
     true,
     1
-] call CBA_fnc_addSettings;
+] call CBA_fnc_addSetting;
 
-LOG("TF47 Ticketsystem settings loaded!");
+LOG("TF47 Ticketsystem preInit completed!");

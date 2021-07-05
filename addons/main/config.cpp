@@ -1,12 +1,12 @@
 #include "script_component.hpp"
 
 class CfgPatches {
-    class ADDON {
+    class tf47f_main {
         name = COMPONENT;
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {};
+        requiredAddons[] = {"cba_main"};
         author = "TF47 Dragon";
         VERSION_CONFIG;
     };
