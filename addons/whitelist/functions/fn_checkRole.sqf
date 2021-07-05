@@ -7,6 +7,8 @@ params [
 
 private _vehicleType = ([_vehicle] call BIS_fnc_objectType) select 1;
 
+private _result = false;
+
 switch (_vehicleType) do {
     case "Tank": {
         if (_unit getUnitTrait ROLE_TANK_CREW) exitWith { true }; 
@@ -47,6 +49,12 @@ switch (_vehicleType) do {
             };
         };
     };
+    default {
+        //this servers the purpose to check if the vehicle is a vehicle without whitelist
+        //it will therefore overwrite the default false return
+        _result = true;
+    };
 };
 
-false
+_result
+

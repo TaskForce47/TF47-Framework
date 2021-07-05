@@ -5,7 +5,7 @@ params [
 ];
 
 if (isNull _vehicle) exitWith { false };
-if (! (_vehicle getVariable [QGVAR(whitelistDisabled), false])) exitWith { false };
+if (_vehicle getVariable [QGVAR(whitelistDisabled), false]) exitWith { false };
 
 ! (
     _vehicle isKindOf "ParachuteBase" ||
