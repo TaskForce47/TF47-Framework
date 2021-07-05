@@ -41,7 +41,7 @@ jobs:
     - name: Upload Artifact
       uses: actions/upload-artifact@v2-preview
       with:
-        name: taskforce47_client_mod
+        name: taskforce47_framework
         path: ${{ steps.build.outputs.release_path }}
 
   job_release:
@@ -53,13 +53,13 @@ jobs:
       - name: Download latest build
         uses: actions/download-artifact@v2
         with:
-          name: taskforce47_client_mod
+          name: taskforce47_framework
 
       # zip it
       - uses: papeloto/action-zip@v1
         with:
-          files: \@taskforce47_client_mod/
-          dest: \@taskforce47_client_mod.zip
+          files: \@taskforce47_framework/
+          dest: \@taskforce47_framework.zip
 
       # release it
       - uses: "marvinpinto/action-automatic-releases@latest"
@@ -67,4 +67,4 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: true
           files: |
-            \@taskforce47_client_mod.zip
+            \@taskforce47_framework.zip
