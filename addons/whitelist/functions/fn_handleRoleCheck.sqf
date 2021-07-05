@@ -12,6 +12,6 @@ if (! ([_vehicle] call FUNC(isValidVehicle))) exitWith {};
 
 if ([_unit, _vehicle] call FUNC(checkRole)) exitWith {};
 
-[_unit] call FUNC(kickFromVehicle);
+[_unit, "You are not on the correct slot to use this vehicle"] call FUNC(kickFromVehicle);
 
 true

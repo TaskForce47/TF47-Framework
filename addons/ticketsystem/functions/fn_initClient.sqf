@@ -30,7 +30,7 @@ player addEventHandler ["Killed", {
         if (_tickets > 0) then {
             [_tickets, true, _message, _adminUid] remoteExecCall [QFUNC(changeTickets), 2];
         } else {
-            [(_tickets * -1), false, _message, _adminUid] remoteExecCall [QFUNC(changeTickets), 2];
+            [abs _tickets, false, _message, _adminUid] remoteExecCall [QFUNC(changeTickets), 2];
         };
     },
     "admin"
