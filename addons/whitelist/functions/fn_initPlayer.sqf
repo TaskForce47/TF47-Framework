@@ -35,7 +35,7 @@ player addEventHandler ["GetInMan", {
         [
             {
                 [
-                    "",
+                    "AllVehicles",
                     "init",
                     {
                         params ["_vehicle"];
@@ -44,11 +44,11 @@ player addEventHandler ["GetInMan", {
                             player getUnitTrait ROLE_UAV_LARGE) exitWith {};
                         
                         player disableUAVConnectability [_vehicle, true];
-                        GVAR(uav) pushBackUnique _vehicle;
+                        GVAR(uavList) pushBackUnique _vehicle;
                         //cleanup uav list
                         _vehicle addEventHandler ["Killed", {
                             params ["_drone"];
-                            GVAR(index) deleteAt (GVAR(uav) findIf { _x isEqualTo _drone });
+                            GVAR(index) deleteAt (GVAR(uavList) findIf { _x isEqualTo _drone });
                         }];
                     },
                     true,
