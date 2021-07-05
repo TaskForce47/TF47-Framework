@@ -10,14 +10,13 @@ if (!isServer) exitWith {
 };
 
 if (isNull _vehicle) exitWith {};
-if (_cost < 0) then { _cost = _cost * -1 };
+if (_cost < 0) then { _cost = abs _cost };
 
 private _objectName = [_vehicle, "tf47_vehicle_"] call BIS_fnc_objectVar;
 private _displayName = [_vehicle] call EFUNC(common,getVehicleDisplayName);
 
 GVAR(registeredVehicles) set [_objectName, [_objectName, _displayName, _cost]];
 
-_vehicle setVariable [QGVAR(registered), true, true];
 _vehicle setVariable [QGVAR(cost), _cost, true];
 _vehicle setVariable [QGVAR(commanderUid), ""];
 
