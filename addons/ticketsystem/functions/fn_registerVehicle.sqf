@@ -24,13 +24,13 @@ _vehicle setVariable [QGVAR(commanderUid), ""];
 //the vehicle can be already registered but we don't want another eventhandler to be attached
 if (! (_vehicle getVariable [QGVAR(registered), false])) then {
 
-    _vehicle addMPEventHandler ["MPKilled", {
+    private _mpEhId = _vehicle addMPEventHandler ["MPKilled", {
         params ["_unit"];
         if (!isServer) exitWith {};
         [_unit] call FUNC(handleVehicleKilled);
     }];
 
-    _vehicle addEventHandler ["GetIn", {
+    private _ehId = _vehicle addEventHandler ["GetIn", {
         params ["_vehicle", "_role", "_unit"];
         if (!isPlayer _unit) exitWith {};
         if (role isEqualTo "cargo") exitWith {};
@@ -45,6 +45,9 @@ if (! (_vehicle getVariable [QGVAR(registered), false])) then {
             _vehicle setVariable [QGVAR(commanderUid), getPlayerUID _unit];
         };
     }];
+
+    _vehicle setVariable [QGVAR(killedEh), _mpEhId];
+    _vehicle setVariable [QGVAR(getInEh), _ehId];
 
     _vehicle setVariable [QGVAR(registered), true, true];
 };
