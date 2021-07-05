@@ -24,4 +24,6 @@ private _permissionsPlayer = GVAR(permissionCache) getOrDefault [_playerUid, []]
     if (! (_x in _permissionsPlayer)) exitWith { false };
 } foreach (_permissionsSlot select 0);
 
-true
+if ((_permissionsSlot select 1) isEqualTo []) exitWith { true };
+
+false
