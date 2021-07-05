@@ -7,6 +7,7 @@ GVAR(tickets) = call FUNC(loadTicketsFromProfile);
 publicVariable QGVAR(tickets);
 GVAR(registeredVehicles) = createHashMap;
 GVAR(registeredUnits) = createHashMap;
+GVAR(vehicleTicketCosts) = createHashMap;
 
 addMissionEventHandler ["HandleDisconnect", {
     params ["_unit", "_id", "_uid", "_name"];
@@ -56,3 +57,19 @@ if (GVAR(endSession)) then {
         }
     ] call CBA_fnc_addEventhandler;
 };
+
+[
+    "AllVehicles",
+    "init",
+    {
+        params ["_vehicle"];
+        
+        private _data = GVAR(vehicleTicketCosts) getOrDefault [typeOf _vehicle, []];
+        if (_data isEqualTo []) exitWith {};
+
+        [_vehicle, _data] call FUNC(registerVehicle);
+    },
+    true
+    [],
+    true
+] call CBA_fnc_addClassEventhandler;

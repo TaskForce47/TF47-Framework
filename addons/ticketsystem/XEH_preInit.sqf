@@ -12,6 +12,15 @@ LOG("TF47 Ticketsystem running preInit!");
 ] call CBA_fnc_addSetting;
 
 [
+    QGVAR(enableAutoRegistering),
+    "CHECKBOX",
+    ["Enables auto registering of spawned vehicles", "Will try to register a new vehicle with tickets if classname is found in a predefined list"],
+    ["TF47 Framework", "Ticketsystem"],
+    true,
+    1
+] call CBA_fnc_addSetting;
+
+[
     QGVAR(defaultTickets),
     "LIST",
     ["Default tickets", "Ticket count the mission starts with"],

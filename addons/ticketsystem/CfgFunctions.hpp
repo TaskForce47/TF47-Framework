@@ -14,6 +14,7 @@ class CfgFunctions
             class loadTicketsFromProfile {};
             class registerUnit {};
             class registerVehicle {};
+            class registerVehicleTicketcost {};
             class saveTicketsToProfile {};
             class unregisterVehicle {};
             //class settings { preInit = 1; };
