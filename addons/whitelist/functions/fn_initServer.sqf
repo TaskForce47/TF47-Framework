@@ -19,6 +19,8 @@ GVAR(validRoles) = [
     "TF47_role_uav_large"
 ];
 
+GVAR(ignoreList) = [];
+
 addMissionEventHandler ["PlayerConnected", {
     params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
 

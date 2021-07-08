@@ -18,6 +18,7 @@ class CfgFunctions
             class registerAttackAircraft {};
             class registerRoles {};
             class registerSlotWhitelist {};
+            class registerIgnoredVehicle {};
             //class settings { preInit = 1; };
         };
     };
