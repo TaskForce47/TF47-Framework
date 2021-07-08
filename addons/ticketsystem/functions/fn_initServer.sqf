@@ -69,7 +69,7 @@ if (GVAR(endSession)) then {
 
         [_vehicle, _data] call FUNC(registerVehicle);
     },
-    true
+    true,
     [],
     true
 ] call CBA_fnc_addClassEventhandler;
