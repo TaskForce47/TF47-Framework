@@ -11,4 +11,15 @@ class CfgFunctions
             class initServer { postInit = 1; };
         };
     };
+    class TF47_Base
+    {
+        class base 
+        {
+            file = "\tf47\tf47_framework\addons\main\functions\base";
+            class initClient { postInit = 1; };
+            class initServer { postInit = 1; };
+            class registerBase {};
+            class unregisterBase {};
+        }
+    };
 };
