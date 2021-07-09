@@ -5,7 +5,7 @@ params [
     ["_resetTickets", false, [true]]
 ];
 
-if (_ticketCount < 0 || _resetTickets) then {
+if (_ticketCount <= 0 || _resetTickets) then {
     _ticketCount = -1;
 };
 
