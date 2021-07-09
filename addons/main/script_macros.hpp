@@ -11,3 +11,4 @@
 
 #define EVENT(var1) QEGVAR(event,var1)
 #define EXEC_ONLY_UNSCHEDULED if (canSuspend) exitWith { LOG("WARNING: " + _fnc_scriptName + " was called in SCHEDULED Enviroment from "+ _fnc_scriptNameParent); [missionNamespace getVariable _fnc_scriptName, _this] call CBA_fnc_directCall;}
+#define EXEC_ONLY_SERVER if (!isServer) exitWith { _this remoteExecCall [_fnc_scriptName, 2]; }
