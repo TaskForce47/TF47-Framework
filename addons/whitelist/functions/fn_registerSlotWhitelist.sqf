@@ -6,7 +6,7 @@ params [
     ["_minimalPermissions", [], [[]]]
 ];
 
-if (slot isEqualType objNull) then {
+if (_slot isEqualType objNull) then {
     _slot = str _slot;
 };
 if (_slot isEqualTo "") exitWith {};
