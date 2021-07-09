@@ -13,3 +13,9 @@ class CfgPatches {
 };
 
 #include "CfgFunctions.hpp"
+
+class Extended_PreInit_EventHandlers {
+    class ADDON {
+        init = "call compile preprocessFileLineNumbers '\tf47\tf47_framework\addons\main\XEH_preInit.sqf';";
+    };
+};
