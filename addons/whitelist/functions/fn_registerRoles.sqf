@@ -5,8 +5,9 @@ params [
     ["_roles", [], [[]]]
 ];
 
-if (isNull _slot || _roles isEqualTo []) exitWith {false};
+if (_roles isEqualTo []) exitWith {false};
 if (_slot isEqualType objNull) then {
+    if (isNull _slot) exitWith {}; 
     _slot = str _slot;
 };
 
