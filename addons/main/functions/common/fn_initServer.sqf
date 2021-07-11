@@ -10,8 +10,14 @@ if (isServer && !hasInterface) then {
     EFUNC(prism,createSession) = compileFinal "params [""_missionId"", ""_missionType""]; TF47PrismCreateSession [_missionId, _missionType];";
     EFUNC(prism,endSession) = compileFinal "TF47PrismEndSession;";
 
-    GVAR(sessionId) = [EGVAR(common,missionId), EGVAR(common,missionType)] call EFUNC(prism,createSession);
-    publicVariable QGVAR(sessionId);
+    [
+        {
+            GVAR(sessionId) = [EGVAR(common,missionId), EGVAR(common,missionType)] call EFUNC(prism,createSession);
+            publicVariable QGVAR(sessionId);
+        },
+        nil,
+        5
+    ] call CBA_fnc_waitAndExecute;
 };
 
 addMissionEventHandler ["PlayerConnected", {
