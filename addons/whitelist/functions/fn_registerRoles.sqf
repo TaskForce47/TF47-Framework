@@ -15,7 +15,7 @@ if (_slot isEqualType objNull) then {
 
 //check if user has passed an invalid role
 {
-    if (! (_x in _validRoles)) exitWith {
+    if (! (_x in GVAR(validRoles))) exitWith {
         LOG_2("WARNING! COULD NOT REGISTER SLOT ROLES! PASSED INVALID ROLE!", _x);
         false
     };
