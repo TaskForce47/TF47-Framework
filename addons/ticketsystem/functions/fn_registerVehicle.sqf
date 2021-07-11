@@ -30,15 +30,15 @@ if (! (_vehicle getVariable [QGVAR(registered), false])) then {
     private _ehId = _vehicle addEventHandler ["GetIn", {
         params ["_vehicle", "_role", "_unit"];
         if (!isPlayer _unit) exitWith {};
-        if (role isEqualTo "cargo") exitWith {};
+        if (_role isEqualTo "cargo") exitWith {};
 
-        if (role isEqualTo "commander") exitWith {
+        if (_role isEqualTo "commander") exitWith {
             _vehicle setVariable [QGVAR(commanderUid), getPlayerUID _unit];
         };
-        if (role isEqualTo "gunner" && {isNull (commander _vehicle)}) exitWith {
+        if (_role isEqualTo "gunner" && {isNull (commander _vehicle)}) exitWith {
             _vehicle setVariable [QGVAR(commanderUid), getPlayerUID _unit];
         };
-        if (role isEqualTo "driver" && {isNull (commander _vehicle)} && {isNull (gunner _vehicle)}) exitWith {
+        if (_role isEqualTo "driver" && {isNull (commander _vehicle)} && {isNull (gunner _vehicle)}) exitWith {
             _vehicle setVariable [QGVAR(commanderUid), getPlayerUID _unit];
         };
     }];
