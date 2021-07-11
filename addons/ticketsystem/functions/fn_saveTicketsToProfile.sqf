@@ -5,6 +5,8 @@ params [
     ["_resetTickets", false, [true]]
 ];
 
+EXEC_ONLY_SERVER;
+
 if (_ticketCount <= 0 || _resetTickets) then {
     _ticketCount = -1;
 };

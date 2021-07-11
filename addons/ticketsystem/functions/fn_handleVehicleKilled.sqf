@@ -2,6 +2,8 @@
 
 params ["_vehicle"];
 
+EXEC_ONLY_SERVER;
+
 private _objectName = [_vehicle, "tf47_vehicle_"] call BIS_fnc_objectVar;
 private _data = GVAR(registeredVehicles) getOrDefault [_objectName, []];
 

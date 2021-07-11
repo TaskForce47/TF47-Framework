@@ -6,9 +6,7 @@ params [
     ["_role", "Rifleman", [""]]
 ];
 
-if (!isServer) exitWith {
-    _this remoteExecCall [QFUNC(registerUnit), 2];
-};
+EXEC_ONLY_SERVER;
 
 if (_unit isEqualType objNull) then {
     if (isNull _unit) exitWith {};
