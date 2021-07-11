@@ -14,10 +14,8 @@ if (isServer && !hasInterface) then {
         {
             GVAR(sessionId) = [EGVAR(common,missionId), EGVAR(common,missionType)] call EFUNC(prism,createSession);
             publicVariable QGVAR(sessionId);
-        },
-        nil,
-        5
-    ] call CBA_fnc_waitAndExecute;
+        }
+    ] call CBA_fnc_execNextFrame;
 };
 
 addMissionEventHandler ["PlayerConnected", {
