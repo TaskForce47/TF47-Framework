@@ -13,7 +13,7 @@ if (_unit isEqualType objNull) then {
     _unit = str _unit;
 };
 
-if (_cost < 0) then { _cost = _cost * -1; };
+if (_cost < 0) then { _cost = abs _cost; };
 
 GVAR(registeredUnits) set [_unit, [_unit, _cost, _role]];
 
