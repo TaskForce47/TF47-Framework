@@ -9,6 +9,9 @@ if (isServer && !hasInterface) then {
     EFUNC(prism,getWhitelist) = compileFinal "params [""_playerUid"", ""_callbackCode""]; TF47PrismGetWhitelist [_playerUid, _callbackCode];";
     EFUNC(prism,createSession) = compileFinal "params [""_missionId"", ""_missionType""]; TF47PrismCreateSession [_missionId, _missionType];";
     EFUNC(prism,endSession) = compileFinal "TF47PrismEndSession;";
+
+    GVAR(sessionId) = [EGVAR(common,missionId), EGVAR(common,missionType)] call EFUNC(prism,createSession);
+    publicVariable QGVAR(sessionId);
 };
 
 addMissionEventHandler ["PlayerConnected", {
@@ -19,6 +22,3 @@ addMissionEventHandler ["PlayerConnected", {
 
     [_uid, _name] call EFUNC(prism,createPlayer);
 }];
-
-GVAR(sessionId) = [EGVAR(common,missionId), EGVAR(common,missionType)] call EFUNC(prism,createSession);
-publicVariable QGVAR(sessionId);

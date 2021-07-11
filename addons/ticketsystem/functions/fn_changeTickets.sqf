@@ -34,7 +34,9 @@ if (GVAR(tickets) == 0) then {
     [EVENT(outOfTickets), []] call CBA_fnc_globalEvent;
 };
 
-[_ticketChange, GVAR(tickets), _message, _uid] call EFUNC(prism,updateTicketCount);
+if (isServer && !hasInterface) then {
+    [_ticketChange, GVAR(tickets), _message, _uid] call EFUNC(prism,updateTicketCount);
+};
 
 [{ [GVAR(tickets)] call FUNC(saveTicketsToProfile); }] call CBA_fnc_execNextFrame;
 
