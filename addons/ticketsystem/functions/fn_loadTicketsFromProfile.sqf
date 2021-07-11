@@ -8,7 +8,12 @@ if (_ticketCount == -1) then {
 };
 
 if (isServer && !hasInterface) then {
-    [_ticketCount, _ticketCount, "Session initialized", ""] call EFUNC(prism,updateTicketCount);
+    [
+        { !isNil QEGVAR(main,sessionId) },
+        {
+            [_ticketCount, _ticketCount, "Session initialized", ""] call EFUNC(prism,updateTicketCount);
+        }
+    ] call CBA_fnc_waitUntilAndExecute;
 };
 
 _ticketCount
