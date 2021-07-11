@@ -2,6 +2,8 @@
 
 params ["_unit"];
 
+EXEC_ONLY_SERVER;
+
 private _slotName = str _unit;
 private _data = GVAR(registeredUnits) getOrDefault [_slotName, []];
 

@@ -4,6 +4,8 @@ params [
     ["_vehicle", objNull, [objNull]]
 ];
 
+EXEC_ONLY_SERVER;
+
 if (isNull _vehicle) exitWith { false };
 if (! (_vehicle getVariable [QGVAR(registered), false])) exitWith { false };
 

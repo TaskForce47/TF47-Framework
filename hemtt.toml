@@ -14,7 +14,7 @@ include = [
     "./include"
 ]
 
-key_name = "{{prefix}}-{{version}}"
+key_name = "{{prefix}}_framework-{{version}}"
 authority = "{{prefix}}-{{version}}-{{git \"id 8\"}}"
 
 releasebuild = []

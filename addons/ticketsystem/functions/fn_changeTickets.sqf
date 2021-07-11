@@ -7,9 +7,7 @@ params [
     ["_uid", "", [""]]
 ];
 
-if (!isServer) exitWith {
-    _this remoteExecCall [QFUNC(changeTickets),2];
-};
+EXEC_ONLY_SERVER;
 
 private _oldTicketCount = GVAR(tickets);
 
