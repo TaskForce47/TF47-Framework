@@ -8,7 +8,7 @@ class CfgFunctions
             class crashToDesktop {};
             class getVehicleDisplayName {};
             class initClient { preInit = 1; };
-            class initServer { postInit = 1; };
+            class initServer { preInit = 1; };
         };
     };
     class TF47_Base

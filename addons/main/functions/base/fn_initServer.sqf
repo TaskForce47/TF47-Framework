@@ -1,6 +1,6 @@
 #include "macros.hpp"
 
-GVAR(isServer) = false;
+if (!isServer) exitWith {};
 
 GVAR(baseIndex) = 0;
 GVAR(baseList) = [];
