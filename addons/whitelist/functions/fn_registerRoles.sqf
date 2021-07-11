@@ -5,6 +5,8 @@ params [
     ["_roles", [], [[]]]
 ];
 
+EXEC_ONLY_SERVER;
+
 if (_roles isEqualTo []) exitWith {false};
 if (_slot isEqualType objNull) then {
     if (isNull _slot) exitWith {}; 
