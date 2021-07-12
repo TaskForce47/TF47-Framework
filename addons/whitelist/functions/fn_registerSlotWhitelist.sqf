@@ -6,6 +6,8 @@ params [
     ["_minimalPermissions", [], [[]]]
 ];
 
+EXEC_ONLY_SERVER;
+
 if (_slot isEqualType objNull) then {
     _slot = str _slot;
 };
