@@ -23,4 +23,6 @@ if (_slot isEqualType objNull) then {
 
 GVAR(slotRoles) set [_slot, _roles];
 
+publicVariable QGVAR(slotRoles);
+
 true

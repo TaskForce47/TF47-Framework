@@ -3,6 +3,9 @@
 GVAR(ownerLockupTable) = createHashMap;
 GVAR(slotRequiredPermissions) = createHashMap;
 GVAR(slotRoles) = createHashMap;
+
+publicVariable QGVAR(slotRoles);
+
 GVAR(permissionCache) = createHashMap;
 GVAR(attackAircraft) = [];
 GVAR(validRoles) = [

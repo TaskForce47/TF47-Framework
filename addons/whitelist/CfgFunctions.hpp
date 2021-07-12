@@ -9,6 +9,7 @@ class CfgFunctions
             class checkWhitelistSlot {};
             class handleRoleCheck {};
             class handleSlotCheck {};
+            class hasRole {};
             class initPlayer { postInit = 1; };
             class initServer { postInit = 1; };
             class initSlotRoles {};
