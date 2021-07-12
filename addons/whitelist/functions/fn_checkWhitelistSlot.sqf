@@ -17,16 +17,20 @@ private _requiredPermissions = _permissionsSlot select 0;
 private _overwritePermissions = _permissionsSlot select 1;
 
 
+scopeName "_main";
+
 //minimal permission overrules everything for case like moderator without plane permissions 
 {
-    if (_x in _overwritePermissions) exitWith { true };
+    if (_x in _overwritePermissions) then {
+        true breakOut "_main";
+    };
 } foreach _permissionsPlayer;
 
 //strict check, all the following permissions have to be fullfilled
 {
-    if (! (_x in _permissionsPlayer)) exitWith { false };
+    if (! (_x in _permissionsPlayer)) then {
+        false breakOut "_main";
+    };
 } foreach _requiredPermissions;
 
-if (_overwritePermissions isEqualTo []) exitWith { true };
-
-false
+true
