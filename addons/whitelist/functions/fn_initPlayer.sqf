@@ -6,12 +6,14 @@ GVAR(uavList) = [];
 
 player addEventHandler ["SeatSwitchedMan", {
     params ["_unit1", "_unit2", "_vehicle"];
+    if (!GVAR(enableWhitelist)) exitWith {};
     if (([_unit2] call CBA_fnc_vehicleRole) isEqualTo "cargo") exitWith {};
     [_unit2, _vehicle] remoteExecCall [QFUNC(handleRoleCheck), 2];
 }];
 
 player addEventHandler ["GetInMan", {
     params ["_unit", "_role", "_vehicle", "_turret"];
+    if (!GVAR(enableWhitelist)) exitWith {};
     if (_role isEqualTo "cargo") exitWith {};
     [_unit, _vehicle] remoteExecCall [QFUNC(handleRoleCheck), 2];
 }];

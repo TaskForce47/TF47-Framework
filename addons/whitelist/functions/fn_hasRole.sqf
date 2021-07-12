@@ -1,16 +1,13 @@
 #include "macros.hpp"
 
 params [
-    ["_unit", objNull, [objNull, ""]],
+    ["_unit", objNull, [objNull]],
     ["_role", "", [""]]
 ];
 
-if (_unit isEqualType objNull) then {
-    if (isNull _unit) exitWith {};
+if (isNull _unit) exitWith {};
+private _slot = str _role;
+ 
+private _roles = GVAR(slotRoles) getOrDefault [_slot, []];
 
-    _unit = str _unit;
-};
-
-private _roles = GVAR(slotRoles) getOrDefault [_unit, []];
-
-_role in _roles
+_role in _roles;
