@@ -6,6 +6,7 @@ class CfgFunctions
         {
             file = "\tf47\tf47_framework\addons\tracking\functions";
 
+            class initClient {};
         };
     };
 };
