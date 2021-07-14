@@ -78,4 +78,6 @@ addMissionEventHandler ["PlayerConnected", {
     true
 ] call CBA_fnc_addClassEventHandler;
 
+missionNamespace setVariable [QGVAR(initialized), true, true];
+
 true

@@ -73,3 +73,5 @@ if (GVAR(endSession)) then {
     [],
     true
 ] call CBA_fnc_addClassEventhandler;
+
+missionNamespace setVariable [QGVAR(initialized), true, true];
