@@ -2,9 +2,9 @@ class CfgFunctions
 {
     class ADDON
     {
-        class ticketsystem
+        class tracking
         {
-            file = "\tf47\tf47_framework\addons\ticketsystem\tracking";
+            file = "\tf47\tf47_framework\addons\tracking\functions";
 
         };
     };
