@@ -6,7 +6,7 @@ params [
 ];
 
 if (isNull _unit) exitWith {};
-private _slot = str _role;
+private _slot = str _unit;
  
 private _roles = GVAR(slotRoles) getOrDefault [_slot, []];
 
