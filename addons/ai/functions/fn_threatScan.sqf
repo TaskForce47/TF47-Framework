@@ -43,29 +43,9 @@ private _fnc_getThreadLevel = {
     params ["_object", "_range"];
 
     if (_object isKindOf "Man") then {
-        private _secondaryWeapon = secondaryWeapon _object;
-        if (_secondaryWeapon == "") exitWith { 0 };
-        private _result = _object call _fnc_analyzeLauncher;
-
-        if ((_result select 1) >= 1) exitWith { 1 };
+        if ([secondaryWeapon _object] call FUNC(isAntiAirWeapon)) exitWith { 1 };
     };
     0
-};
-
-private _fnc_analyzeLauncher = {
-    params ["_unit"];
-    private _result = [];
-    private _magazines = getArray (configFile >> "CfgWeapons" >> secondaryWeapon _unit >> "magazines");
-    {
-        private _ammo = getText (configFile >> "CfgMagazines" >> _x >> "ammo");
-        private _airLock = getNumber (configFile >> "CfgAmmo" >> _ammo >> "airlock");
-        private _lockTypes = getText (configFile >> "CfgAmmo" >> _ammo >> "weaponLockSystem");
-        private _cmImunity = getText (configFile >> "CfgAmmo" >> _ammo >> "cmimmunity");
-        private _damage = getNumber (configFile >> "CfgAmmo" >> _ammo >> "hit");
-        _result pushBack [_ammo, _airLock, _lockTypes, _cmImunity, _damage];
-    } foreach _magazines;
-    
-    _result
 };
 
 private _result = _objects apply {
