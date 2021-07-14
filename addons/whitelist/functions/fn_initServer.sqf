@@ -1,5 +1,7 @@
 #include "macros.hpp"
 
+if (!isServer) exitWith {};
+
 GVAR(ownerLockupTable) = createHashMap;
 GVAR(slotRequiredPermissions) = createHashMap;
 GVAR(slotRoles) = createHashMap;
