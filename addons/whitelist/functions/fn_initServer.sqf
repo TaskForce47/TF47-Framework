@@ -67,19 +67,6 @@ addMissionEventHandler ["PlayerConnected", {
     62
 ] call CBA_fnc_addPerFrameHandler;
 
-[
-    "CAManBase",
-    "init",
-    {
-        params ["_unit"];
-        if (!isPlayer _unit) exitWith {};
-        [_unit] call FUNC(initSlotRoles);
-    },
-    true,
-    [],
-    true
-] call CBA_fnc_addClassEventHandler;
-
 missionNamespace setVariable [QGVAR(initialized), true, true];
 
 true

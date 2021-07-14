@@ -5,47 +5,49 @@ params [
     ["_vehicle", objNull, [objNull]]
 ];
 
-private _vehicleType = ([_vehicle] call BIS_fnc_objectType) select 1;
+scopeName "_main";
 
+private _vehicleType = ([_vehicle] call BIS_fnc_objectType) select 1;
+private _roles = GVAR(slotRoles) getOrDefault [str _unit, []];
 private _result = false;
 
 switch (_vehicleType) do {
     case "Tank": {
-        if (_unit getUnitTrait ROLE_TANK_CREW) exitWith { true }; 
+        if (ROLE_TANK_CREW in _roles) exitWith { true }; 
     };
     case "TrackedAPC": {
-        if (_unit getUnitTrait ROLE_TANK_CREW) exitWith { true };
+        if (ROLE_TANK_CREW in _roles) exitWith { true };
     };
     case "WheeledAPC": {
-        if (_unit getUnitTrait ROLE_TANK_CREW) exitWith { true };
+        if (ROLE_TANK_CREW in _roles) exitWith { true };
     };
     case "Plane": {
         if ((typeOf _vehicle) in GVAR(attackAircraft)) then {
             if (driver _vehicle isEqualTo _unit) then {
-                if (_unit getUnitTrait ROLE_PLANE_ATTACK_PILOT) exitWith { true };
+                if (ROLE_PLANE_ATTACK_PILOT in _roles) exitWith { true };
             } else {
-                if (_unit getUnitTrait ROLE_PLANE_ATTACK_CREW) exitWith { true };
+                if (ROLE_PLANE_ATTACK_CREW in _roles) exitWith { true };
             };
         } else {
             if (driver _vehicle isEqualTo _unit) then {
-                if (_unit getUnitTrait ROLE_PLANE_TRANSPORT_PILOT) exitWith { true };
+                if (ROLE_PLANE_TRANSPORT_PILOT in _roles) exitWith { true };
             } else {
-                if (_unit getUnitTrait ROLE_PLANE_TRANSPORT_CREW) exitWith { true };
+                if (ROLE_PLANE_TRANSPORT_CREW in _roles) exitWith { true };
             };
         };
     };
     case "Helicopter": {
         if ((typeOf _vehicle) in GVAR(attackAircraft)) then {
             if (driver _vehicle isEqualTo _unit) then {
-                if (_unit getUnitTrait ROLE_ROTARY_ATTACK_PILOT) exitWith { true };
+                if (ROLE_ROTARY_ATTACK_PILOT in _roles) exitWith { true };
             } else {
-                if (_unit getUnitTrait ROLE_ROTARY_ATTACK_CREW) exitWith { true };
+                if (ROLE_ROTARY_ATTACK_CREW in _roles) exitWith { true };
             };
         } else {
             if (driver _vehicle isEqualTo _unit) then {
-                if (_unit getUnitTrait ROLE_ROTARY_TRANSPORT_PILOT) exitWith { true };
+                if (ROLE_ROTARY_TRANSPORT_PILOT in _roles) exitWith { true };
             } else {
-                if (_unit getUnitTrait ROLE_ROTARY_TRANSPORT_CREW) exitWith { true };
+                if (ROLE_ROTARY_TRANSPORT_CREW in _roles) exitWith { true };
             };
         };
     };
