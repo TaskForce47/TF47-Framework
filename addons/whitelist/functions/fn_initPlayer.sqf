@@ -91,8 +91,6 @@ player addEventHandler ["Take", {
     "ace_arsenal_displayClosed",
     {
         private _roles = GVAR(slotRoles) getOrDefault [str player, []];
-        if (ROLE_UAV_SMALL in _roles || 
-            ROLE_UAV_LARGE in _roles) exitWith {};
                         
         if (ROLE_UAV_SMALL in _roles || 
             ROLE_UAV_LARGE in _roles) then {
