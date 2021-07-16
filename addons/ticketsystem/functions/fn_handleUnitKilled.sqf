@@ -8,7 +8,7 @@ private _slotName = str _unit;
 private _data = GVAR(registeredUnits) getOrDefault [_slotName, []];
 
 if (_data isEqualTo []) then {
-	_data = [nil, abs GVAR(defaultCostRifleman), "Rifleman"];
+    _data = [nil, abs GVAR(defaultCostRifleman), "Rifleman"];
 };
 
 private _uid = getPlayerUID _unit;
