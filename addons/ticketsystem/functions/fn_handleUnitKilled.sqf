@@ -7,7 +7,9 @@ EXEC_ONLY_SERVER;
 private _slotName = str _unit;
 private _data = GVAR(registeredUnits) getOrDefault [_slotName, []];
 
-if (_data isEqualTo []) exitWith {false}; //unit is not registered, cancel at this point
+if (_data isEqualTo []) then {
+	_data = [nil, abs GVAR(defaultCostRifleman), "Rifleman"];
+};
 
 private _uid = getPlayerUID _unit;
 private _cost = _data select 1;
