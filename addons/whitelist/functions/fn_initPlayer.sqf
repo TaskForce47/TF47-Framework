@@ -86,3 +86,27 @@ player addEventHandler ["Take", {
         } foreach GVAR(uavList);
     };
 }];
+
+[
+    "ace_arsenal_displayClosed",
+    {
+        private _roles = GVAR(slotRoles) getOrDefault [str player, []];
+        if (ROLE_UAV_SMALL in _roles || 
+            ROLE_UAV_LARGE in _roles) exitWith {};
+                        
+        if (ROLE_UAV_SMALL in _roles || 
+            ROLE_UAV_LARGE in _roles) then {
+            {
+                if (!isNull _x) then {
+                    player enableUAVConnectability [_x, true];
+                };
+            } foreach GVAR(uavList);
+        } else {
+            {
+                if (!isNull _x) then {
+                    player disableUAVConnectability [_x, true];
+                };
+            } foreach GVAR(uavList);
+        };
+    }
+] call CBA_fnc_addEventHandler;
