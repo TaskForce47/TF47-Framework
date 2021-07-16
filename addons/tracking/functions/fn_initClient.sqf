@@ -26,7 +26,7 @@ player addEventHandler ["FiredMan", {
         private _firedProjectiles = GVAR(firedProjectiles);
         {
             if (isNull (_x select 1)) then { continue };
-            diag_log format ["[TF47] Tracking: Projectile Id: %1 pos update: %2, speed: %3", _x select 0, getPos (_x select 1), speed (_x select 2)];
+            diag_log format ["[TF47] Tracking: Projectile Id: %1 pos update: %2, speed: %3", _x select 0, getPos (_x select 1), speed (_x select 1)];
         } foreach _firedProjectiles;
     },
     1
@@ -36,7 +36,7 @@ player addEventHandler ["FiredMan", {
     "CAManBase",
     "HitPart",
     {
-        if (!alive (_x select 0 select 0)) exitWith {};
+        if (!alive (_this select 0 select 0)) exitWith {};
         {
             _x params ["_target", "_shooter", "_projectile", "_position", "_velocity", "_selection", "_ammo", "_vector", "_radius", "_surfaceType", "_isDirect"];
             private _firedProjectiles = GVAR(firedProjectiles);
@@ -61,11 +61,16 @@ player addEventHandler ["FiredMan", {
     "CAManBase",
     "init",
     {
-        _this addEventHandler ["Killed", {
+        params ["_unit"];
+        _unit addEventHandler ["Killed", {
             params ["_unit", "_killer", "_instigator", "_useEffects"];
 
             private _cachedProjectile = _unit getVariable [QGVAR(lastHitProjectile), []];
             if (_cachedProjectile isEqualTo []) exitWith { diag_log "[TF47] Tracking: No own projectile killed target"};
+
+            private _msg = format ["[TF47] Tracking: Projectile Id: %1 killed target %2", _cachedProjectile select 0, name _unit];
+            systemChat _msg;
+            diag_log _msg;
         }];
     },
     true,
