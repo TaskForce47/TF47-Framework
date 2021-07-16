@@ -42,8 +42,9 @@ player addEventHandler ["GetInMan", {
                     {
                         params ["_vehicle"];
                         if (!unitIsUAV _vehicle) exitWith {};
-                        if (player getUnitTrait ROLE_UAV_SMALL || 
-                            player getUnitTrait ROLE_UAV_LARGE) exitWith {};
+                        private _roles = GVAR(slotRoles) getOrDefault [str player, []];
+                        if (ROLE_UAV_SMALL in _roles || 
+                            ROLE_UAV_LARGE in _roles) exitWith {};
                         
                         player disableUAVConnectability [_vehicle, true];
                         GVAR(uavList) pushBackUnique _vehicle;
@@ -68,9 +69,10 @@ player addEventHandler ["Take", {
     params ["_unit", "_container", "_item"];
 
     if ((([_item] call BIS_fnc_itemType) select 1) isNotEqualTo "UAVTerminal") exitWith {};
+    private _roles = GVAR(slotRoles) getOrDefault [str _unit, []];
 
-    if (player getUnitTrait ROLE_UAV_SMALL || 
-        player getUnitTrait ROLE_UAV_LARGE) then {
+    if (ROLE_UAV_SMALL in _roles || 
+        ROLE_UAV_LARGE in _roles) then {
         {
             if (!isNull _x) then {
                 player enableUAVConnectability [_x, true];
