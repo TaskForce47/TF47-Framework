@@ -6,7 +6,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"cba_main", "tf47_prism_main"};
+        requiredAddons[] = {"cba_main"};
         author = "TF47 Dragon";
         VERSION_CONFIG;
     };
