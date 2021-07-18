@@ -2,7 +2,8 @@
 
 params [
     ["_unit", objNull, [objNull]],
-    ["_vehicle", objNull, [objNull]]
+    ["_vehicle", objNull, [objNull]],
+    ["_role", "driver", [""]]
 ];
 
 scopeName "_main";
@@ -23,13 +24,13 @@ switch (_vehicleType) do {
     };
     case "Plane": {
         if ((typeOf _vehicle) in GVAR(attackAircraft)) then {
-            if (driver _vehicle isEqualTo _unit) then {
+            if (_role isEqualTo "driver") then {
                 if (ROLE_PLANE_ATTACK_PILOT in _roles) then { true breakOut "_main"; };
             } else {
                 if (ROLE_PLANE_ATTACK_CREW in _roles) then { true breakOut "_main"; };
             };
         } else {
-            if (driver _vehicle isEqualTo _unit) then {
+            if (_role isEqualTo "driver") then {
                 if (ROLE_PLANE_TRANSPORT_PILOT in _roles) then { true breakOut "_main"; };
             } else {
                 if (ROLE_PLANE_TRANSPORT_CREW in _roles) then { true breakOut "_main"; };
@@ -38,13 +39,13 @@ switch (_vehicleType) do {
     };
     case "Helicopter": {
         if ((typeOf _vehicle) in GVAR(attackAircraft)) then {
-            if (driver _vehicle isEqualTo _unit) then {
+            if (_role isEqualTo "driver") then {
                 if (ROLE_ROTARY_ATTACK_PILOT in _roles) then { true breakOut "_main"; };
             } else {
                 if (ROLE_ROTARY_ATTACK_CREW in _roles) then { true breakOut "_main"; };
             };
         } else {
-            if (driver _vehicle isEqualTo _unit) then {
+            if (_role isEqualTo "driver") then {
                 if (ROLE_ROTARY_TRANSPORT_PILOT in _roles) then { true breakOut "_main"; };
             } else {
                 if (ROLE_ROTARY_TRANSPORT_CREW in _roles) then { true breakOut "_main"; };
