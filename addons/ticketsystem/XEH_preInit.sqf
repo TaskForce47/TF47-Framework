@@ -31,10 +31,10 @@ LOG("TF47 Ticketsystem running preInit!");
 
 [
     QGVAR(defaultCostRifleman),
-    "LIST",
+    "SLIDER",
     ["Default cost infantry", "Default cost for a rifleman if he is not registered"],
     ["TF47 Framework", "Ticketsystem"],
-    [[0, 2, 5, 10], [], 0],
+    [0, 50, 5, 0],
     1
 ] call CBA_fnc_addSetting;
 
