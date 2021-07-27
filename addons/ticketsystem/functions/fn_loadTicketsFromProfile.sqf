@@ -11,7 +11,7 @@ if (isServer && !hasInterface) then {
     [
         { !isNil QEGVAR(main,sessionId) },
         {
-            [_ticketCount, _ticketCount, "Session initialized", ""] call EFUNC(prism,updateTicketCount);
+            "tf47_prism_sharp" callExtension ["updateTicketCount", [GVAR(tickets), GVAR(tickets), "Session initialized", ""]];
         }
     ] call CBA_fnc_waitUntilAndExecute;
 };
