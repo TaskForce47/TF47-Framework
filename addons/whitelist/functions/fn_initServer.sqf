@@ -32,21 +32,28 @@ addMissionEventHandler ["PlayerConnected", {
     if(_name isEqualTo "__SERVER__") exitWith {};
     if(["HC", _uid] call BIS_fnc_inString) exitWith {};
     GVAR(ownerLockupTable) set [_uid, _owner];
-    [
-        _uid,
-        {
-            params ["_playerUid", "_permissions"];
+    "tf47_prism_sharp" callExtension ["getPlayerPermissions", [_uid]];
+}];
+
+addMissionEventHandler ["ExtensionCallback", {
+    params ["_name", "_function", "_data"];
+    if (_name isNotEqualTo "TF47PrismSharp") exitWith {};
+
+    switch _function do {
+        case "TF47PrismWhitelistUpdate": {
+            private _data = parseSimpleArray _data;
+            _data params ["_playerUid", "_permissions"];
 
             GVAR(permissionCache) set [_playerUid, _permissions];
-            private _owner = GVAR(ownerLockupTable) getOrDefault [_playerUid, -1];
-            if (_owner == -1) exitWith {
-                ERROR("FAILED TO LOOKUP USERS OWNERID FROM PLAYERUID! COULD NOT INITALIZE WHITELIST FOR THIS PLAYER");
+
+            _owner = GVAR(ownerLockupTable) getOrDefault [_uid, []];
+            if (_owner isNotEqualTo []) then {
+                GVAR(ownerLockupTable) deleteAt _uid;
+                GVAR(initialized) = true;
+                _owner publicVariableClient QGVAR(initialized);
             };
-            //this will message the client that he can now use the whitelist
-            GVAR(initialized) = true;
-            _owner publicVariableClient QGVAR(initialized);
-        }
-    ] call EFUNC(prism,getWhitelist);
+        };
+    };
 }];
 
 //update the whitelist for all players every few min
@@ -54,19 +61,12 @@ addMissionEventHandler ["PlayerConnected", {
     {
         private _players = call CBA_fnc_players;
         {
-            [
-                getPlayerUID _x,
-                {
-                    params ["_playerUid", "_permissions"];
-
-                    GVAR(permissionCache) set [_playerUid, _permissions];
-                }
-            ] call EFUNC(prism,getWhitelist);
+            "tf47_prism_sharp" callExtension ["getPlayerPermissions", [getPlayerUID _x]];
         } forEach _players;
     },
     62
 ] call CBA_fnc_addPerFrameHandler;
 
-missionNamespace setVariable [QGVAR(initialized), true, true];
+missionNamespace setVariable [QGVAR(initialized), true];
 
 true

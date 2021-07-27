@@ -33,7 +33,7 @@ if (GVAR(tickets) == 0) then {
 };
 
 if (isServer && !hasInterface) then {
-    [_ticketChange, GVAR(tickets), _message, _uid] call EFUNC(prism,updateTicketCount);
+    "tf47_prism_sharp" callExtension ["updateTicketCount", [_ticketChange, GVAR(tickets), _message, _uid]];
 };
 
 [{ [GVAR(tickets)] call FUNC(saveTicketsToProfile); }] call CBA_fnc_execNextFrame;
