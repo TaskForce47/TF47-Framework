@@ -9,6 +9,7 @@ files = [
 	"mod.cpp",
 	"meta.cpp",
 	"*.paa"
+	"tf47_prism_sharp_x64.dll"
 ]
 include = [
     "./include"
