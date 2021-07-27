@@ -31,7 +31,7 @@ if (GVAR(endSession)) then {
         {
             if (missionNamespace getVariable [QGVAR(suddenDeath), false]) exitWith {};
 
-            ["TF47NotificationOutOfTickets", [format ["We have run out of tickets, you have %1 seconds to gain some before the game is over!"]]]
+            ["TF47NotificationOutOfTickets", [format ["We have run out of tickets, you have %1 seconds to gain some before the game is over!", GVAR(endSessionTimeout)]]] 
                 remoteExec ["BIS_fnc_showNotification", -2];
             ["Alarm"] remoteExec ["playSound", -2];
 
