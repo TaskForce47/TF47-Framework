@@ -8,7 +8,7 @@ sig_version = 3
 files = [
 	"mod.cpp",
 	"meta.cpp",
-	"*.paa"
+	"*.paa",
 	"tf47_prism_sharp_x64.dll"
 ]
 include = [
