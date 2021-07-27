@@ -6,7 +6,8 @@ if(!isServer) exitWith {};
 if (isServer && !hasInterface) then {
     [
         {
-            GVAR(sessionId) = "tf47_prism_sharp" callExtension ["createSession", [worldName, EGVAR(common,missionType), EGVAR(common,missionId)]];
+            private _result = "tf47_prism_sharp" callExtension ["createSession", [worldName, EGVAR(common,missionType), EGVAR(common,missionId)]];
+            GVAR(sessionId) = parseNumber (_result select 0);
             publicVariable QGVAR(sessionId);
         },
         nil,
