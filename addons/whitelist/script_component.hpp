@@ -24,3 +24,15 @@
 #define ROLE_ROTARY_ATTACK_CREW "TF47_role_rotary_attack_crew"
 #define ROLE_UAV_SMALL "TF47_role_uav_small"
 #define ROLE_UAV_LARGE "TF47_role_uav_large"
+#define ROLE_TOC "TF47_role_TOC"
+
+#define WHITELIST_USER_ADMIN 1
+#define WHITELIST_USER_MODERATOR 2
+#define WHITELIST_USER_TF 3
+#define WHITELIST_CCT 4
+#define WHITELIST_TANK 5
+#define WHITELIST_ROTARY_WINGS 6
+#define WHITELIST_FIXED_WINGS 7
+#define WHITELIST_ATTACK_AIR 8
+#define WHITELIST_UAV 9
+#define WHITELIST_BUILDERS 10
