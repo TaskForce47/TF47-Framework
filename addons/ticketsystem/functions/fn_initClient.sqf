@@ -69,10 +69,11 @@ player addEventHandler ["Killed", {
             player, {
                 private _data = GVAR(registeredUnits) getOrDefault [str _this, []];
                 if (_data isEqualTo []) exitWith {};
-                [_data, {
+                [_data, 
+                    {
                         params ["_unit", "_cost", "_slotType"];
                         [format ["You are playing as %1", _slotType],
-                        format ["This slot costs % Tickets", _cost]] call BIS_fnc_infoText;
+                        format ["This slot costs % Tickets", _cost]] spawn BIS_fnc_infoText;
                     }
                 ] remoteExec ["call", remoteExecutedOwner];
             }
