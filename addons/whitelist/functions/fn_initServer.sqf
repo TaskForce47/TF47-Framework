@@ -21,7 +21,8 @@ GVAR(validRoles) = [
     "TF47_role_rotary_attack_pilot",
     "TF47_role_rotary_attack_crew",
     "TF47_role_uav_small",
-    "TF47_role_uav_large"
+    "TF47_role_uav_large",
+    "TF47_role_TOC"
 ];
 
 GVAR(ignoreList) = [];
@@ -55,6 +56,28 @@ addMissionEventHandler ["ExtensionCallback", {
                 };
                 GVAR(initialized) = true;
                 _owner publicVariableClient QGVAR(initialized);
+
+                if (WHITELIST_USER_ADMIN in _permissions) then {
+                    [{
+                        missionNamespace setVariable [QGVAR(isAdministrator), true];
+                    }] remoteExec ["call", _owner];
+                };
+                if (WHITELIST_USER_MODERATOR in _permissions) then {
+                    [{
+                        missionNamespace setVariable [QGVAR(isModerator), true];
+                    }] remoteExec ["call", _owner];
+                };
+                if (WHITELIST_USER_TF in _permissions) then {
+                    [{
+                        missionNamespace setVariable [QGVAR(isTF), true];
+                    }] remoteExec ["call", _owner];
+                };
+                if (WHITELIST_BUILDERS in _permissions) then {
+                    [{
+                        missionNamespace setVariable [QGVAR(isBuilder), true];
+                    }] remoteExec ["call", _owner];
+                };
+
                 diag_log format ["[TF47 Prism-sharp] Initialized %1 with netId: %2", _playerUid, _owner];
             };
         };
