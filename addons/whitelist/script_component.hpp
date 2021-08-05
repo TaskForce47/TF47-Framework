@@ -24,7 +24,7 @@
 #define ROLE_ROTARY_ATTACK_CREW "TF47_role_rotary_attack_crew"
 #define ROLE_UAV_SMALL "TF47_role_uav_small"
 #define ROLE_UAV_LARGE "TF47_role_uav_large"
-#define ROLE_TOC "TF47_role_TOC"
+#define ROLE_TOC "TF47_role_toc"
 
 #define WHITELIST_USER_ADMIN 1
 #define WHITELIST_USER_MODERATOR 2
