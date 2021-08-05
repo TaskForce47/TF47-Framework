@@ -14,31 +14,31 @@ class CfgNotifications : CfgNotifications
 
     class TF47NotificationTicketLoss : TF47Notification {
         title = "Ticket loss";
-        iconPicture = "z\TF47\addons\mission_configs\data\icons\tickets_loss.paa";
+        iconPicture = "tf47\tf47_framework\addons\notifications\data\icons\tickets_loss.paa";
         description = "%1";
     };
 
     class TF47NotificationTicketGain : TF47Notification {
         title = "Ticket gain";
-        iconPicture = "z\TF47\addons\mission_configs\data\icons\tickets_gain.paa";
+        iconPicture = "tf47\tf47_framework\addons\notifications\data\icons\tickets_gain.paa";
         description = "%1";
     };
 
     class TF47NotificationOutOfTickets : TF47Notification {
         title = "No tickets remaining";
-        iconPicture = "z\TF47\addons\mission_configs\data\icons\tickets_lost.paa";
+        iconPicture = "tf47\tf47_framework\addons\notifications\data\icons\tickets_lost.paa";
         description = "%1";
     };
 
     class TF47NotificationNotWhitelisted : TF47Notification {
         title = "Not whitelisted";
-        iconPicture = "z\TF47\addons\mission_configs\data\icons\wrong_slot.paa";
+        iconPicture = "tf47\tf47_framework\addons\notifications\data\icons\wrong_slot.paa";
         description = "%1";
     };
 
     class TF47NotificationBadWeapon : TF47Notification {
         title = "You are not allowed to carry that weapon";
-        iconPicture = "z\TF47\addons\mission_configs\data\icons\bad_weapon.paa";
+        iconPicture = "tf47\tf47_framework\addons\notifications\data\icons\bad_weapon.paa";
         description = "%1";
     };
 };
